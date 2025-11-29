@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>تحميل SnapTube APK | مباشر</title>
+  <meta name="description" content="تنزيل مجاني وآمن لتطبيق SnapTube على أندرويد. يدعم تنزيل الفيديوهات والموسيقى من أكثر من 100 منصة." />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Tajawal', sans-serif;
+      background: #FFD84D; /* أصفر مريح */
+      color: #111827;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 960px;
+      width: 100%;
+      padding: 24px;
+      text-align: center;
+    }
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .logo img {
+      width: 120px;
+      max-width: 100%;
+      height: auto;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+    p {
+      font-size: 1rem;
+      color: #374151;
+      margin-bottom: 20px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 16px 28px;
+      background: linear-gradient(180deg,#22c55e,#16a34a);
+      color: #062a12;
+      font-weight: 700;
+      border-radius: 12px;
+      text-decoration: none;
+      position: relative;
+      transition: .2s;
+    }
+    .btn:hover { filter: brightness(1.05); }
+    .pulse::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 12px;
+      box-shadow: 0 0 0 0 rgba(34,197,94,.6);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { to { box-shadow: 0 0 0 18px rgba(34,197,94,0); } }
+
+    /* دائرة progress */
+    .progress-circle {
+      width: 100px;
+      height: 100px;
+      margin: 20px auto;
+      position: relative;
+    }
+    .progress-circle svg {
+      transform: rotate(-90deg);
+      width: 100%;
+      height: 100%;
+    }
+    .progress-circle circle {
+      fill: none;
+      stroke-width: 10;
+      stroke-linecap: round;
+    }
+    .progress-bg {
+      stroke: #e5e7eb;
+    }
+    .progress-bar {
+      stroke: #22c55e;
+      stroke-dasharray: 314; /* محيط الدائرة */
+      stroke-dashoffset: 314; /* تبدأ فاضية */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- شعار SnapTube -->
+    <div class="logo">
+      <img src="https://raw.githubusercontent.com/Hamoudi4app/SnapTube/main/image_1764430152837.jpeg" alt="SnapTube Logo">
+    </div>
+
+    <h1>تنزيل سناب تيوب مجاناً على أندرويد</h1>
+    <p>آمن وتم فحصه. يدعم تنزيل الموسيقى والفيديو بجودة متعددة من أكثر من 100 منصة.</p>
+
+    <!-- زر التحميل -->
+    <a class="btn pulse" id="downloadBtn" href="https://d2zfax1dcjhc44.cloudfront.net/release2/snaptube/gitlab/apk/com.snaptube.premium/7.50.0.75050310/Click_me_to_install_SnapTube_tube_snaptubecom.apk" rel="noopener">
+      ⬇️ تحميل مباشر
+    </a>
+
+    <!-- دائرة التحميل -->
+    <div class="progress-circle" id="loader" style="display:none;">
+      <svg>
+        <circle class="progress-bg" cx="50" cy="50" r="50"></circle>
+        <circle class="progress-bar" cx="50" cy="50" r="50"></circle>
+      </svg>
+    </div>
+
+    <footer>
+      © 2025
+    </footer>
+  </div>
+
+  <script>
+    const btn = document.getElementById('downloadBtn');
+    const loader = document.getElementById('loader');
+    const progressBar = loader.querySelector('.progress-bar');
+    const circumference = 2 * Math.PI * 50; // محيط الدائرة
+
+    btn.addEventListener('click', function(e){
+      e.preventDefault(); 
+      btn.style.display = 'none'; 
+      loader.style.display = 'block'; 
+
+      let progress = 0;
+      const duration = 5000; // 5 ثواني
+      const interval = 50;   // كل 50ms يحدث تحديث
+      const step = circumference / (duration / interval);
+
+      const timer = setInterval(() => {
+        progress += step;
+        progressBar.style.strokeDashoffset = Math.max(circumference - progress, 0);
+      }, interval);
+
+      setTimeout(function(){
+        clearInterval(timer);
+        window.location.href = btn.href;
+        loader.style.display = 'none'; 
+        btn.style.display = 'inline-block'; 
+        progressBar.style.strokeDashoffset = circumference; // إعادة التهيئة
+      }, duration);
+    });
+  </script>
+</body>
+</html>
